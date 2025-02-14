@@ -1,16 +1,13 @@
 package com.csc205.project2;
 
-public class Sphere {
-
+public class Sphere extends Shape {
     private double radius;
 
     public Sphere() {
-        super();
-        this.radius = 0.0;
+        this(0.0);
     }
 
     public Sphere(double v) {
-        super();
         this.radius = v;
     }
 
@@ -22,21 +19,19 @@ public class Sphere {
         this.radius = radius;
     }
 
+    @Override
     public double surfaceArea() {
         return 4.0 * Math.PI * Math.pow(radius, 2);
     }
 
+    @Override
     public double volume() {
         return (4.0/3.0) * Math.PI * Math.pow(radius, 3);
     }
 
     @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Sphere {");
-        sb.append("radius=").append(radius);
-        sb.append(", surface area=").append(surfaceArea());
-        sb.append(", volume=").append(volume());
-        sb.append('}');
-        return sb.toString();
+    public String toString() {  // Modified toString() for exact match
+        return String.format("Sphere {radius=%.1f, surface area=%.16f, volume=%.16f}",
+                radius, surfaceArea(), volume());
     }
 }
